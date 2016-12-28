@@ -44,6 +44,9 @@ R_earth=6371.*km2m#radius of earth in m
 R_sun=69.63e9 #radius of sun in cm
 AU=1.496e13#1AU in cm
 
+hc=1.98645e-9 #value of h*c in erg*nm
+
+
 #Mean molecular masses
 m_co2=44.01*amu2g #co2, in g
 m_h2o=18.02*amu2g #h2o, in g
@@ -52,6 +55,20 @@ m_h2o=18.02*amu2g #h2o, in g
 g=371. #surface gravity of Mars, cm/s**2, from: http://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html
 
 deg2rad=np.pi/180. #1 degree in radian
+
+def erg2phot(energy, wavelength):
+	"""
+	Convert energy (radiances, fluxes) to photon (radiances, fluxes)
+	
+	Takes: 
+	---energy, in ergs (etc...)
+	---corresponding wavelength(s) in nm
+	Returns:
+	---corresponding number of photons in photons (etc...)
+	"""
+	
+	numphot=energy*wavelength/hc
+	return numphot
 
 
 ########################
@@ -123,7 +140,7 @@ if plot_dust_clouds:
 	########################
 	numelt=len(elt_list)
 	fig, ax=plt.subplots(4, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'$\tau_d=0.1$',r'$\tau_d=1$',r'$\tau_d=10$'])
 	
@@ -132,25 +149,23 @@ if plot_dust_clouds:
 	ax[2].set_title(r'$\tau_{cloud}=100$')
 	ax[3].set_title(r'$\tau_{cloud}=1000$')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[3].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[3].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt=elt_list[ind]
 		
-		ax[0].plot(od1_wav_dict[elt], od1_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(od10_wav_dict[elt], od10_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(od100_wav_dict[elt], od100_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[3].plot(od1000_wav_dict[elt], od1000_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(od1_wav_dict[elt], erg2phot(od1_surfint_dict[elt],od1_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(od10_wav_dict[elt], erg2phot(od10_surfint_dict[elt], od10_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(od100_wav_dict[elt], erg2phot(od100_surfint_dict[elt], od100_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[3].set_ylim([1.e-6, 1.e4])
+	ax[3].set_ylim([1.e5, 1.e15])
 	ax[3].set_yscale('log')
 	ax[3].set_xlim([100, 500])
 	ax[3].set_xlabel('Wavelength (nm)')
@@ -206,7 +221,7 @@ if plot_dust_pco2:
 	########################
 	numelt=len(elt_list)
 	fig, ax=plt.subplots(3, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'$\tau_d=0.1$',r'$\tau_d=1$',r'$\tau_d=10$'])
 	
@@ -214,23 +229,21 @@ if plot_dust_pco2:
 	ax[1].set_title('pCO2=0.2 bar')
 	ax[2].set_title('pCO2=2 bar')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt=elt_list[ind]
 
 		
-		ax[0].plot(pco2_0p02_wav_dict[elt], pco2_0p02_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(pco2_0p2_wav_dict[elt], pco2_0p2_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(pco2_2_wav_dict[elt], pco2_2_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(pco2_0p02_wav_dict[elt], erg2phot(pco2_0p02_surfint_dict[elt], pco2_0p02_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(pco2_0p2_wav_dict[elt], erg2phot(pco2_0p2_surfint_dict[elt],pco2_0p2_wav_dict[elt] ), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(pco2_2_wav_dict[elt], erg2phot(pco2_2_surfint_dict[elt], pco2_2_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[2].set_ylim([1.e-5, 1.e4])
+	ax[2].set_ylim([1.e5, 1.e15])
 	ax[2].set_yscale('log')
 	ax[2].set_xlim([100, 500])
 	ax[2].set_xlabel('Wavelength (nm)')
@@ -291,7 +304,7 @@ if plot_ph2s_clouds:
 	########################
 	numelt=len(elt_list)
 	fig, ax=plt.subplots(4, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'pH$_2$S$=2\times10^{-9}$ bar',r'pH$_2$S$=2\times10^{-8}$ bar',r'pH$_2$S$=2\times10^{-7}$ bar',r'pH$_2$S$=2\times10^{-6}$ bar',r'pH$_2$S$=2\times10^{-5}$ bar',r'pH$_2$S$=2\times10^{-4}$ bar'])
 	
@@ -300,25 +313,23 @@ if plot_ph2s_clouds:
 	ax[2].set_title(r'$\tau_{cloud}=100$')
 	ax[3].set_title(r'$\tau_{cloud}=1000$')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[3].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[3].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt=elt_list[ind]
 		
-		ax[0].plot(od1_wav_dict[elt], od1_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(od10_wav_dict[elt], od10_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(od100_wav_dict[elt], od100_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[3].plot(od1000_wav_dict[elt], od1000_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(od1_wav_dict[elt], erg2phot(od1_surfint_dict[elt], od1_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(od10_wav_dict[elt], erg2phot(od10_surfint_dict[elt], od10_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(od100_wav_dict[elt], erg2phot(od100_surfint_dict[elt], od100_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[3].set_ylim([1.e-6, 1.e4])
+	ax[3].set_ylim([1.e4, 1.e15])
 	ax[3].set_yscale('log')
 	ax[3].set_xlim([100, 500])
 	ax[3].set_xlabel('Wavelength (nm)')
@@ -382,7 +393,7 @@ if plot_pso2_clouds:
 	########################
 	numelt=len(elt_list)
 	fig, ax=plt.subplots(4, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'pSO$_2=2\times10^{-9}$ bar',r'pSO$_2=2\times10^{-8}$ bar',r'pSO$_2=2\times10^{-7}$ bar',r'pSO$_2=2\times10^{-6}$ bar',r'pSO$_2=2\times10^{-5}$ bar'])
 	
@@ -391,25 +402,23 @@ if plot_pso2_clouds:
 	ax[2].set_title(r'$\tau_{cloud}=100$')
 	ax[3].set_title(r'$\tau_{cloud}=1000$')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[3].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[3].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt=elt_list[ind]
 		
-		ax[0].plot(od1_wav_dict[elt], od1_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(od10_wav_dict[elt], od10_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(od100_wav_dict[elt], od100_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[3].plot(od1000_wav_dict[elt], od1000_surfint_dict[elt], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(od1_wav_dict[elt], erg2phot(od1_surfint_dict[elt], od1_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(od10_wav_dict[elt], erg2phot(od10_surfint_dict[elt], od10_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(od100_wav_dict[elt], erg2phot(od100_surfint_dict[elt], od100_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[3].set_ylim([1.e-6, 1.e4])
+	ax[3].set_ylim([1.e4, 1.e15])
 	ax[3].set_yscale('log')
 	ax[3].set_xlim([100, 500])
 	ax[3].set_xlabel('Wavelength (nm)')
@@ -457,7 +466,7 @@ if plot_ph2s_pco2:
 	########################
 	numelt=len(elt_list0)
 	fig, ax=plt.subplots(3, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'pH$_2$S$=2\times10^{-9}$ bar',r'pH$_2$S$=2\times10^{-8}$ bar',r'pH$_2$S$=2\times10^{-7}$ bar',r'pH$_2$S$=2\times10^{-6}$ bar',r'pH$_2$S$=2\times10^{-5}$ bar',r'pH$_2$S$=2\times10^{-4}$ bar'])
 	
@@ -465,24 +474,22 @@ if plot_ph2s_pco2:
 	ax[1].set_title('pCO2=0.2 bar')
 	ax[2].set_title('pCO2=2 bar')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt0=elt_list0[ind]
 		elt1=elt_list1[ind]
 		elt2=elt_list2[ind]
 		
-		ax[0].plot(wav_dict[elt0], surfint_dict[elt0], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(wav_dict[elt1], surfint_dict[elt1], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(wav_dict[elt2], surfint_dict[elt2], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(wav_dict[elt0], erg2phot(surfint_dict[elt0], wav_dict[elt0]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(wav_dict[elt1], erg2phot(surfint_dict[elt1], wav_dict[elt1]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(wav_dict[elt2], erg2phot(surfint_dict[elt2], wav_dict[elt2]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[2].set_ylim([1.e-5, 1.e4])
+	ax[2].set_ylim([1.e6, 1.e15])
 	ax[2].set_yscale('log')
 	ax[2].set_xlim([100, 500])
 	ax[2].set_xlabel('Wavelength (nm)')
@@ -529,7 +536,7 @@ if plot_pso2_pco2:
 	########################
 	numelt=len(elt_list0)
 	fig, ax=plt.subplots(3, figsize=(16.5*cm2inch,10), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numelt))
 	conclist=np.array([r'pSO$_2=2\times10^{-9}$ bar',r'pSO$_2=2\times10^{-8}$ bar',r'pSO$_2=2\times10^{-7}$ bar',r'pSO$_2=2\times10^{-6}$ bar',r'pSO$_2=2\times10^{-5}$ bar'])
 	
@@ -537,24 +544,22 @@ if plot_pso2_pco2:
 	ax[1].set_title('pCO2=0.2 bar')
 	ax[2].set_title('pCO2=2 bar')
 	
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[2].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[2].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 
 	for ind in range(0, numelt):
 		elt0=elt_list0[ind]
 		elt1=elt_list1[ind]
 		elt2=elt_list2[ind]
 		
-		ax[0].plot(wav_dict[elt0], surfint_dict[elt0], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[1].plot(wav_dict[elt1], surfint_dict[elt1], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
-		ax[2].plot(wav_dict[elt2], surfint_dict[elt2], marker='s', markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[0].plot(wav_dict[elt0], erg2phot(surfint_dict[elt0], wav_dict[elt0]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[1].plot(wav_dict[elt1], erg2phot(surfint_dict[elt1], wav_dict[elt1]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
+		ax[2].plot(wav_dict[elt2], erg2phot(surfint_dict[elt2], wav_dict[elt2]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	#ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
-	#ax[2].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 
-	ax[2].set_ylim([1.e-5, 1.e4])
+	ax[2].set_ylim([1.e6, 1.e15])
 	ax[2].set_yscale('log')
 	ax[2].set_xlim([100, 500])
 	ax[2].set_xlabel('Wavelength (nm)')
@@ -601,31 +606,31 @@ if plot_clouds:
 	########################
 	numtau=len(cloudtau_list)
 	fig, ax=plt.subplots(2, figsize=(cm2inch*16.5,11.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numtau))
 	
 	ax[0].set_title('CO$_2$ Cloud Deck')
 	ax[1].set_title('H$_2$O Cloud Deck')
-	ax[0].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
-	ax[1].plot(toa_wavelengths, toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[0].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
+	ax[1].plot(toa_wavelengths, erg2phot(toa_intensity, toa_wavelengths), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 	
 	for tau_ind in range(0, numtau):
 		cloudtau=cloudtau_list[tau_ind]
 
-		ax[0].plot(co2_wav_dict[cloudtau], co2_surfint_dict[cloudtau], marker='s', markersize=markersizeval, linewidth=1, color=colors[tau_ind], label='Cloud OD='+cloudtau)
+		ax[0].plot(co2_wav_dict[cloudtau], erg2phot(co2_surfint_dict[cloudtau], co2_wav_dict[cloudtau]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[tau_ind], label='Cloud OD='+cloudtau)
 
-		ax[1].plot(h2o_wav_dict[cloudtau], h2o_surfint_dict[cloudtau], marker='s', markersize=markersizeval, linewidth=1, color=colors[tau_ind], label='Cloud OD='+cloudtau)
+		ax[1].plot(h2o_wav_dict[cloudtau], erg2phot(h2o_surfint_dict[cloudtau], h2o_wav_dict[cloudtau]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[tau_ind], label='Cloud OD='+cloudtau)
 		
 
-	ax[0].set_ylim([1.e-2, 1.e4])
+	ax[0].set_ylim([1.e8, 1.e15])
 	ax[0].set_yscale('log')
 	ax[0].legend(loc=0, fontsize=10)
-	ax[0].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[0].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 	
-	ax[1].set_ylim([1.e-2, 1.e4])
+	ax[1].set_ylim([1.e8, 1.e15])
 	ax[1].set_yscale('log')
 	ax[1].legend(loc=0, fontsize=10)
-	ax[1].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
 	ax[1].set_xlabel('Wavelength (nm)')
 
 	plt.tight_layout()
@@ -675,18 +680,18 @@ if plot_clouds:
 	#numP=len(P_0_list)
 	
 	#fig, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
-	#markersizeval=5.
+	#markersizeval=3.
 	
 	#for P_ind in range(0, numP):
 		#P_0=P_0_list[P_ind]
 		#ax[P_ind].set_title('pCO$_2$='+P_0+'bar')
-		#ax[P_ind].plot(toa_wavelengths,toa_intensity,marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+		#ax[P_ind].plot(toa_wavelengths,toa_intensity,marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 			
 		#label=P_0+'bar_'+T_0+'K'
 		
-		#ax[P_ind].plot(wav_notd_dict[label], surfint_notd_dict[label], marker='s', markersize=markersizeval, linewidth=1, color='red', label='No Temp Dependence')
+		#ax[P_ind].plot(wav_notd_dict[label], surfint_notd_dict[label], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='red', label='No Temp Dependence')
 		
-		#ax[P_ind].plot(wav_td_dict[label], surfint_td_dict[label], marker='s', markersize=markersizeval, linewidth=1, color='blue', label='Temp Dependence')
+		#ax[P_ind].plot(wav_td_dict[label], surfint_td_dict[label], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='blue', label='Temp Dependence')
 
 		
 		#ax[P_ind].set_yscale('log')
@@ -705,7 +710,7 @@ if plot_clouds:
 	#plt.show
 	
 	#fig2, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
-	#markersizeval=5.
+	#markersizeval=3.
 	
 	#for P_ind in range(0, numP):
 		#P_0=P_0_list[P_ind]
@@ -713,7 +718,7 @@ if plot_clouds:
 		
 		#label=P_0+'bar_'+T_0+'K'
 		
-		#ax[P_ind].plot(wav_notd_dict[label], (surfint_notd_dict[label]-surfint_td_dict[label])/toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black')
+		#ax[P_ind].plot(wav_notd_dict[label], (surfint_notd_dict[label]-surfint_td_dict[label])/toa_intensity, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black')
 
 			
 		#ax[P_ind].set_yscale('linear')
@@ -769,24 +774,25 @@ if plot_td_dep_lowpressure:
 	numP=len(P_0_list)
 	
 	fig, ax=plt.subplots(numP, figsize=(16.5*cm2inch,4.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	
 	for P_ind in range(0, numP):
 		P_0=P_0_list[P_ind]
 		#ax.set_title('pCO$_2$='+P_0+'bar')
-		ax.plot(toa_wavelengths,toa_intensity,marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+		ax.plot(toa_wavelengths,erg2phot(toa_intensity, toa_wavelengths),marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 			
 		label=P_0+'bar_'+T_0+'K'
 		
-		ax.plot(wav_notd_dict[label], surfint_notd_dict[label], marker='s', markersize=markersizeval, linewidth=1, color='red', label='No Temp Dependence')
+		ax.plot(wav_notd_dict[label], erg2phot(surfint_notd_dict[label], wav_notd_dict[label]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='red', label='No Temp Dependence')
 		
-		ax.plot(wav_td_dict[label], surfint_td_dict[label], marker='s', markersize=markersizeval, linewidth=1, color='blue', label='Temp Dependence')
+		ax.plot(wav_td_dict[label], erg2phot(surfint_td_dict[label], wav_td_dict[label]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='blue', label='Temp Dependence')
 
 		
 		ax.set_yscale('log')
-		ax.set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+		ax.set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+
 	
-	ax.set_ylim([1.e-2, 1.e4])
+	ax.set_ylim([1.e9, 1.e15])
 	ax.set_xlim([100, 500])
 	ax.set_xlabel('Wavelength (nm)')
 	
@@ -799,7 +805,7 @@ if plot_td_dep_lowpressure:
 	###Plot differences
 
 	fig2, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	
 	for P_ind in range(0, numP):
 		P_0=P_0_list[P_ind]
@@ -807,7 +813,7 @@ if plot_td_dep_lowpressure:
 		
 		label=P_0+'bar_'+T_0+'K'
 		
-		ax.plot(wav_notd_dict[label], (surfint_notd_dict[label]-surfint_td_dict[label])/toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color='black')
+		ax.plot(wav_notd_dict[label], (surfint_notd_dict[label]-surfint_td_dict[label])/toa_intensity, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black')
 
 			
 		ax.set_yscale('linear')
@@ -859,25 +865,26 @@ if plot_tpdep:
 	numT=len(T_0_list)
 	
 	fig, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numT))
 	
 	for P_ind in range(0, numP):
 		P_0=P_0_list[P_ind]
 		ax[P_ind].set_title('pCO$_2$='+P_0+'bar')
-		ax[P_ind].plot(toa_wavelengths,toa_intensity,marker='s', markersize=markersizeval, linewidth=1, color='black', label='TOA')
+		ax[P_ind].plot(toa_wavelengths,erg2phot(toa_intensity, toa_wavelengths),marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color='black', label='TOA')
 		
 		for T_ind in range(0, numT):
 			T_0=T_0_list[T_ind]
 			
 			label=P_0+'bar_'+T_0+'K'
 			
-			ax[P_ind].plot(wavelengths_dict[label], surface_intensity_dict[label], marker='s', markersize=markersizeval, linewidth=1, color=colors[T_ind], label=T_0+'K')
+			ax[P_ind].plot(wavelengths_dict[label], erg2phot(surface_intensity_dict[label], wavelengths_dict[label]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[T_ind], label=T_0+'K')
 			
 		ax[P_ind].set_yscale('log')
-		ax[P_ind].set_ylabel('Integrated Intensity (erg/s/cm2/nm)')
+		ax[P_ind].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+
 	
-	ax[numP-1].set_ylim([1.e-2, 1.e4])
+	ax[numP-1].set_ylim([1.e9, 1.e15])
 	ax[numP-1].set_xlim([100, 500])
 	ax[numP-1].set_xlabel('Wavelength (nm)')
 	
@@ -888,7 +895,7 @@ if plot_tpdep:
 
 	#PLOT DIFFERENCES
 	fig2, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,numT))
 	
 	for P_ind in range(0, numP):
@@ -901,7 +908,7 @@ if plot_tpdep:
 			label=P_0+'bar_'+T_0+'K'
 			label0=P_0+'bar_'+T_0_list[0]+'K'
 			
-			ax[P_ind].plot(wavelengths_dict[label], np.abs(surface_intensity_dict[label]-surface_intensity_dict[label0])/toa_intensity, marker='s', markersize=markersizeval, linewidth=1, color=colors[T_ind], label=T_0+'K')
+			ax[P_ind].plot(wavelengths_dict[label], np.abs(surface_intensity_dict[label]-surface_intensity_dict[label0])/toa_intensity, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[T_ind], label=T_0+'K')
 			
 		ax[P_ind].set_yscale('log')
 	

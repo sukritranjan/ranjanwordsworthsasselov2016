@@ -59,20 +59,20 @@ deg2rad=np.pi/180. #1 degree in radian
 ########################
 plot_doses_pco2=True #plot the dependence of dose rate on pCO2 in a CO2-H2O atmosphere (fixed temperature) NOTE: may want to do for low-albedo. Both more physically plausible and avoids weird uptick effect
 
-plot_doses_clouds=False #plot the dependence of dose rate on CO2 cloud optical depth in a CO2-H2O atmosphere (fixed temperature)
+plot_doses_clouds=True #plot the dependence of dose rate on CO2 cloud optical depth in a CO2-H2O atmosphere (fixed temperature)
 
-plot_doses_dust_pco2=False #plot the dependence of dose rate as a function of dust level for different pCO2
-plot_doses_dust_clouds=False #plot the dependence of dose rate as a function of dust level for different cloud levels.
+plot_doses_dust_pco2=True #plot the dependence of dose rate as a function of dust level for different pCO2
+plot_doses_dust_clouds=True #plot the dependence of dose rate as a function of dust level for different cloud levels.
 
-plot_doses_pso2_pco2=False #plot the dependence of dose rate as a function of pSO2 for different pCO2
-plot_doses_pso2_clouds=False #plot the dependence of dose rate as a function of dust level for different cloud levels.
+plot_doses_pso2_pco2=True #plot the dependence of dose rate as a function of pSO2 for different pCO2
+plot_doses_pso2_clouds=True #plot the dependence of dose rate as a function of dust level for different cloud levels.
 
-plot_doses_ph2s_pco2=False #plot the dependence of dose rate as a function of pH2S for different pCO2
-plot_doses_ph2s_clouds=False #plot the dependence of dose rate as a function of pH2S for different pCO2
+plot_doses_ph2s_pco2=True #plot the dependence of dose rate as a function of pH2S for different pCO2
+plot_doses_ph2s_clouds=True #plot the dependence of dose rate as a function of pH2S for different pCO2
 
-plot_reldoses_pso2=False #plot the ratio between the "bad" dose rate and the "good" dose rate as function of PSO2. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
-plot_reldoses_ph2s=False #plot the ratio between the "bad" dose rate and the "good" dose rate as function of PH2S. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
-plot_reldoses_dust=False #plot the ratio between the "bad" dose rate and the "good" dose rate as function of dust level. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
+plot_reldoses_pso2=True #plot the ratio between the "bad" dose rate and the "good" dose rate as function of PSO2. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
+plot_reldoses_ph2s=True #plot the ratio between the "bad" dose rate and the "good" dose rate as function of PH2S. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
+plot_reldoses_dust=True #plot the ratio between the "bad" dose rate and the "good" dose rate as function of dust level. Plot for 1) pCO2=0.02, cloud=1000 and 2) pCO2=2 bar, cloud=0. 
 
 
 ########################
@@ -116,7 +116,7 @@ if plot_reldoses_dust:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cases, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cases):
@@ -185,7 +185,7 @@ if plot_reldoses_ph2s:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cases, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cases):
@@ -254,7 +254,7 @@ if plot_reldoses_pso2:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cases, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cases):
@@ -325,7 +325,7 @@ if plot_doses_ph2s_clouds:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cloud, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cloud):
@@ -397,7 +397,7 @@ if plot_doses_ph2s_pco2:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_pco2, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_pco2):
@@ -468,7 +468,7 @@ if plot_doses_pso2_clouds:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cloud, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cloud):
@@ -540,7 +540,7 @@ if plot_doses_pso2_pco2:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_pco2, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_pco2):
@@ -609,7 +609,7 @@ if plot_doses_dust_clouds:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_cloud, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_cloud):
@@ -677,7 +677,7 @@ if plot_doses_dust_pco2:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(num_pco2, figsize=(16.5*cm2inch,10.), sharex=True, sharey=False)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	for ind2 in range(0, num_pco2):
@@ -741,7 +741,7 @@ if plot_doses_clouds:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(1, figsize=(16.5*cm2inch,6.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	#ax.plot(od_list, dose_200_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
@@ -803,7 +803,7 @@ if plot_doses_pco2:
 	###Plot results
 	########################
 	fig, ax=plt.subplots(1, figsize=(16.5*cm2inch,6.), sharex=True, sharey=True)
-	markersizeval=5.
+	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
 	#ax.plot(P_list, dose_200_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
