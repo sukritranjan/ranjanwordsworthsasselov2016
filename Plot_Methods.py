@@ -75,7 +75,7 @@ if plot_mie_parameters:
 	qsca_dict={} #initialize dict to hold Q_sca
 	w_0_dict={} #initialize dict to hold w_0 (single scattering albedo)
 	g_dict={} #initialize dict to hold asymmetry parameters
-	file_list=np.array(['./ParticulateOpticalParameters/cloud_co2_reff1_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_co2_reff10_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_co2_reff100_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff1_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff10_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff100_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/dust_wolff_reff1p5_vareff0p5_lognormal.pickle'])
+	file_list=np.array(['./ParticulateOpticalParameters/cloud_co2_reff1_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_co2_reff10_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_co2_reff100_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff1_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff10_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/cloud_h2o_reff100_vareff0p1_lognormal.pickle','./ParticulateOpticalParameters/dust_wolff_pangajello_reff1p5_vareff0p5_lognormal.pickle'])
 	
 	label_list=np.array(['$r_{eff}=1 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=10 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=100 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=1 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=10 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=100 \mu m$\n$var_{eff}=0.1$', '$r_{eff}=1.5 \mu m$\n$var_{eff}=0.5$'])
 	for picklefile in file_list:
@@ -144,7 +144,7 @@ if plot_mie_parameters:
 	ax[2,1].set_xlabel('Wavelength (nm)')
 	plt.tight_layout()
 	plt.subplots_adjust(wspace=0.2, hspace=0.1)
-	plt.savefig('./Plots/methods_mieparams.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/methods_mieparams.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -202,7 +202,7 @@ if plot_atmprofile_z:
 	
 	ax[0].legend(loc='best', fontsize=10)
 	plt.tight_layout()
-	plt.savefig('./Plots/methods_atmo_prof_z.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/methods_atmo_prof_z.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -256,5 +256,5 @@ if plot_atmprofile_tp:
 	ax[len(P_0_list)-1].legend(loc='best', fontsize=12)
 
 	plt.tight_layout()
-	plt.savefig('./Plots/methods_atmo_prof_tp.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/methods_atmo_prof_tp.eps', orientation='portrait',papertype='letter', format='eps')
 	plt.show()

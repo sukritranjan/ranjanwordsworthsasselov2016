@@ -228,8 +228,8 @@ def compute_cloud_params(leftedges, rightedges, N_layers, picklefile):
 	
 	f=open(picklefile, 'r')
 	wav, sigma, w_0, g, qsca=pickle.load(f) #units: nm, microns**2, dimless, dimless, dimless NEED TO CHECK ALL UNITS
-	sigma_cgs=(sigma*(micron2cm)**2)/w_0 #convert XC from microns**2 to cm**2 #Also, convert from SCATTERING XC to TOTAL XC. Temp kludge until whole code properly fixed. 
-	#sigma_cgs=sigma*(micron2cm)**2 #convert XC from microns**2 to cm**2
+	####sigma_cgs=(sigma*(micron2cm)**2)/w_0 #convert XC from microns**2 to cm**2 #Also, convert from SCATTERING XC to TOTAL XC. Temp kludge until whole code properly fixed. 
+	sigma_cgs=sigma*(micron2cm)**2 #convert XC from microns**2 to cm**2
 		
 	#sigma_2=np.pi*10.**2.*qsca
 	#print np.max(np.abs(sigma_2-sigma)/sigma)

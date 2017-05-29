@@ -1,4 +1,4 @@
 All Dosimeters Normalized to Space Radiation Case
 # Radiance (100-165 nm) & Radiance (200-300 nm) & UMP Gly Cleavage (lambda0=193nm) & UMP Gly Cleavage (lambda0=230nm) & UMP Gly Cleavage (lambda0=254nm) &  CuCN3 Photoionization (lambda0=254 nm) & CuCN3 Photoionization (lambda0=300 nm)
 # 
-nan	1.61198161957e-05	1.43084373144e-05	1.11213224382e-05	1.15734078539e-05	9.31219778219e-06	1.09977591732e-05
+nan	0.000396656549197	0.00038170906116	0.000281094627003	0.000255279326868	0.000208050513386	0.000269467185594

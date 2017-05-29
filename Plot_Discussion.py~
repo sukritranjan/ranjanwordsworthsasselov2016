@@ -122,13 +122,13 @@ if plot_reldoses_dust:
 	for ind2 in range(0, num_cases):
 		ax[ind2].set_title(titles_list[ind2])
 		
-		ax[ind2].plot(od_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
-		ax[ind2].plot(od_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
-		ax[ind2].plot(od_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
+		ax[ind2].plot(od_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
+		ax[ind2].plot(od_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
+		ax[ind2].plot(od_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
 
-		ax[ind2].plot(od_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
-		ax[ind2].plot(od_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
-		ax[ind2].plot(od_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
+		ax[ind2].plot(od_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
+		ax[ind2].plot(od_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
+		ax[ind2].plot(od_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
 		
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -140,7 +140,7 @@ if plot_reldoses_dust:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_dust.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_dust.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -191,13 +191,13 @@ if plot_reldoses_ph2s:
 	for ind2 in range(0, num_cases):
 		ax[ind2].set_title(titles_list[ind2])
 		
-		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
-		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
-		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
+		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
+		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
+		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
 
-		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
-		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
-		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
+		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
+		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
+		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
 		
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -209,7 +209,7 @@ if plot_reldoses_ph2s:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_ph2s.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_ph2s.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -260,13 +260,13 @@ if plot_reldoses_pso2:
 	for ind2 in range(0, num_cases):
 		ax[ind2].set_title(titles_list[ind2])
 		
-		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
-		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
-		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
+		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label=r'UMP-193/CuCN3-254')
+		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP-230/CuCN3-254')
+		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2]/dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP-254/CuCN3-254')
 
-		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
-		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
-		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
+		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP-193/CuCN3-300')
+		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'UMP-230/CuCN3-300')
+		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2]/dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'UMP-254/CuCN3-300')
 		
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -278,7 +278,7 @@ if plot_reldoses_pso2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_pso2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_pso2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -302,7 +302,7 @@ if plot_doses_ph2s_clouds:
 	pso2_axis=np.array([2.e-9, 2.e-8, 2.e-7, 2.e-6, 2.e-5, 2.e-4]) #pSO2 in bar
 	
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_so2=len(pso2_list)
 	num_cloud=len(cloud_list)
@@ -331,12 +331,12 @@ if plot_doses_ph2s_clouds:
 	for ind2 in range(0, num_cloud):
 		ax[ind2].set_title(cloud_labels[ind2])
 		
-		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax[ind2].set_ylim([1.e-10, 1.e1])
 		ax[ind2].set_yscale('log')
@@ -348,7 +348,7 @@ if plot_doses_ph2s_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_ph2s_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_ph2s_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -403,12 +403,12 @@ if plot_doses_ph2s_pco2:
 	for ind2 in range(0, num_pco2):
 		ax[ind2].set_title('pCO$_2$='+pco2_labels[ind2])
 		
-		#ax[ind2].plot(ph2s_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(ph2s_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(ph2s_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(ph2s_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(ph2s_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(ph2s_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(ph2s_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(ph2s_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(ph2s_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax[ind2].set_ylim([1.e-, 1.e1])
 		ax[ind2].set_yscale('log')
@@ -420,7 +420,7 @@ if plot_doses_ph2s_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_ph2s_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_ph2s_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -445,7 +445,7 @@ if plot_doses_pso2_clouds:
 	pso2_axis=np.array([2.e-9, 2.e-8, 2.e-7, 2.e-6, 2.e-5]) #pSO2 in bar
 	
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_so2=len(pso2_list)
 	num_cloud=len(cloud_list)
@@ -474,12 +474,12 @@ if plot_doses_pso2_clouds:
 	for ind2 in range(0, num_cloud):
 		ax[ind2].set_title(cloud_labels[ind2])
 		
-		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -491,7 +491,7 @@ if plot_doses_pso2_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pso2_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pso2_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -546,12 +546,12 @@ if plot_doses_pso2_pco2:
 	for ind2 in range(0, num_pco2):
 		ax[ind2].set_title('pCO$_2$='+pco2_labels[ind2])
 		
-		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(pso2_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(pso2_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(pso2_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(pso2_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(pso2_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -563,7 +563,7 @@ if plot_doses_pso2_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pso2_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pso2_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -586,7 +586,7 @@ if plot_doses_dust_clouds:
 	od_list=np.array(['dustod=0.1', 'dustod=1', 'dustod=10']) #list of dust optical depths (500 nm)
 	od_axis=np.array([1.e-1, 1., 1.e1])
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_od=len(od_list)
 	num_cloud=len(cloud_list)
@@ -615,12 +615,12 @@ if plot_doses_dust_clouds:
 	for ind2 in range(0, num_cloud):
 		ax[ind2].set_title(cloud_labels[ind2])
 		
-		#ax[ind2].plot(od_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(od_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(od_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(od_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(od_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(od_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(od_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(od_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(od_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(od_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(od_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(od_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -632,7 +632,7 @@ if plot_doses_dust_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_dust_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_dust_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -683,12 +683,12 @@ if plot_doses_dust_pco2:
 	for ind2 in range(0, num_pco2):
 		ax[ind2].set_title('pCO$_2$='+pco2_labels[ind2])
 		
-		#ax[ind2].plot(od_axis, dose_200_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-		ax[ind2].plot(od_axis, dose_ump_193[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-		ax[ind2].plot(od_axis, dose_ump_230[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-		ax[ind2].plot(od_axis, dose_ump_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-		ax[ind2].plot(od_axis, dose_cucn3_254[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-		ax[ind2].plot(od_axis, dose_cucn3_300[:,ind2], marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+		#ax[ind2].plot(od_axis, dose_200_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+		ax[ind2].plot(od_axis, dose_ump_193[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+		ax[ind2].plot(od_axis, dose_ump_230[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+		ax[ind2].plot(od_axis, dose_ump_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+		ax[ind2].plot(od_axis, dose_cucn3_254[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+		ax[ind2].plot(od_axis, dose_cucn3_300[:,ind2], marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 			
 		#ax.set_ylim([1.e-2, 1.e4])
 		ax[ind2].set_yscale('log')
@@ -700,7 +700,7 @@ if plot_doses_dust_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_dust_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_dust_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -744,12 +744,12 @@ if plot_doses_clouds:
 	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
-	#ax.plot(od_list, dose_200_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-	ax.plot(od_list, dose_ump_193, marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-	ax.plot(od_list, dose_ump_230, marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-	ax.plot(od_list, dose_ump_254, marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-	ax.plot(od_list, dose_cucn3_254, marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-	ax.plot(od_list, dose_cucn3_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+	#ax.plot(od_list, dose_200_300, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+	ax.plot(od_list, dose_ump_193, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+	ax.plot(od_list, dose_ump_230, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+	ax.plot(od_list, dose_ump_254, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+	ax.plot(od_list, dose_cucn3_254, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+	ax.plot(od_list, dose_cucn3_300, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 		
 	#ax.set_ylim([1.e-2, 1.e4])
 	ax.set_yscale('log')
@@ -761,7 +761,7 @@ if plot_doses_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.85))
 	ax.legend(bbox_to_anchor=[0, 1.05, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_co2clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_co2clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -806,12 +806,12 @@ if plot_doses_pco2:
 	markersizeval=3.
 	colors=cm.rainbow(np.linspace(0,1,6))
 	
-	#ax.plot(P_list, dose_200_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
-	ax.plot(P_list, dose_ump_193, marker='s', markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
-	ax.plot(P_list, dose_ump_230, marker='s', markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
-	ax.plot(P_list, dose_ump_254, marker='s', markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
-	ax.plot(P_list, dose_cucn3_254, marker='s', markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
-	ax.plot(P_list, dose_cucn3_300, marker='s', markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
+	#ax.plot(P_list, dose_200_300, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[0], label='Radiance 200-300 nm')
+	ax.plot(P_list, dose_ump_193, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[1], label=r'UMP Bond Cleavage ($\lambda_0=193$)')
+	ax.plot(P_list, dose_ump_230, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[2], label=r'UMP Bond Cleavage ($\lambda_0=230$)')
+	ax.plot(P_list, dose_ump_254, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[3], label=r'UMP Bond Cleavage ($\lambda_0=254$)')
+	ax.plot(P_list, dose_cucn3_254, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[4], label=r'CuCN$_3$ Photoionization ($\lambda_0=254$)')
+	ax.plot(P_list, dose_cucn3_300, marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[5], label=r'CuCN$_3$ Photoionization ($\lambda_0=300$)')
 	
 	###ax.axvline(6.e-3, color='black', linestyle='--', linewidth='1') #demarcates breakpoint between two temperature regimes. Doesn't matter, but still good to be clear when variable changes.
 	
@@ -825,6 +825,6 @@ if plot_doses_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.85))
 	ax.legend(bbox_to_anchor=[0, 1.05, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()

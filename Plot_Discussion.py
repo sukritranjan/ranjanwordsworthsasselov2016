@@ -140,7 +140,7 @@ if plot_reldoses_dust:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_dust.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_dust.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -209,7 +209,7 @@ if plot_reldoses_ph2s:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_ph2s.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_ph2s.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -278,7 +278,7 @@ if plot_reldoses_pso2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_reldoses_pso2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_reldoses_pso2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -302,7 +302,7 @@ if plot_doses_ph2s_clouds:
 	pso2_axis=np.array([2.e-9, 2.e-8, 2.e-7, 2.e-6, 2.e-5, 2.e-4]) #pSO2 in bar
 	
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_so2=len(pso2_list)
 	num_cloud=len(cloud_list)
@@ -348,7 +348,7 @@ if plot_doses_ph2s_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_ph2s_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_ph2s_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -420,7 +420,7 @@ if plot_doses_ph2s_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_ph2s_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_ph2s_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -445,7 +445,7 @@ if plot_doses_pso2_clouds:
 	pso2_axis=np.array([2.e-9, 2.e-8, 2.e-7, 2.e-6, 2.e-5]) #pSO2 in bar
 	
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_so2=len(pso2_list)
 	num_cloud=len(cloud_list)
@@ -491,7 +491,7 @@ if plot_doses_pso2_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pso2_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pso2_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -563,7 +563,7 @@ if plot_doses_pso2_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pso2_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pso2_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -586,7 +586,7 @@ if plot_doses_dust_clouds:
 	od_list=np.array(['dustod=0.1', 'dustod=1', 'dustod=10']) #list of dust optical depths (500 nm)
 	od_axis=np.array([1.e-1, 1., 1.e1])
 	cloud_list=np.array(['co2cloudod=1', 'co2cloudod=10', 'co2cloudod=100','co2cloudod=1000']) 
-	cloud_labels=np.array([r'$\tau_{cloud}=1 (unscaled)$',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
+	cloud_labels=np.array([r'$\tau_{cloud}=1$ (unscaled)',r'$\tau_{cloud}=10$ (unscaled)',r'$\tau_{cloud}=100$ (unscaled)',r'$\tau_{cloud}=1000$ (unscaled)'])
 	
 	num_od=len(od_list)
 	num_cloud=len(cloud_list)
@@ -632,7 +632,7 @@ if plot_doses_dust_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_dust_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_dust_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -700,7 +700,7 @@ if plot_doses_dust_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.9))
 	ax[0].legend(bbox_to_anchor=[0, 1.2, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_dust_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_dust_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -761,7 +761,7 @@ if plot_doses_clouds:
 	
 	plt.tight_layout(rect=(0,0,1., 0.85))
 	ax.legend(bbox_to_anchor=[0, 1.05, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_co2clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_co2clouds.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()
 
@@ -825,6 +825,6 @@ if plot_doses_pco2:
 	
 	plt.tight_layout(rect=(0,0,1., 0.85))
 	ax.legend(bbox_to_anchor=[0, 1.05, 1., 0.7], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10) 
-	plt.savefig('./Plots/discussion_doses_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/discussion_doses_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 
 	plt.show()

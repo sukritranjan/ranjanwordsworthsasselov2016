@@ -346,7 +346,7 @@ if plotactionspec:
 	#ax1.legend(bbox_to_anchor=[0, 1.1, 1,1], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10)
 	ax1.legend(loc='upper right', ncol=1, fontsize=10)
 	plt.tight_layout(rect=(0,0,1,1))
-	plt.savefig('./Plots/actionspectra.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/actionspectra.eps', orientation='portrait',papertype='letter', format='eps')
 
 
 if plotactionspec_talk:

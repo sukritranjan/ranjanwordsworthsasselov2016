@@ -137,7 +137,7 @@ for inputatmofilelabel_elt in inputatmofilelabel_elt_list:
 		dusttaulabel=dusttaulabel_list[ind]
 		dusttauvalue=dusttauvalue_list[ind]
 		
-		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel=inputatmofilelabel_elt, outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel, inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=False, includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_reff1p5_vareff0p5_lognormal.pickle')
+		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel=inputatmofilelabel_elt, outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel, inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=False, includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_pangajello_reff1p5_vareff0p5_lognormal.pickle')
 
 ##################
 ####Dust and clouds (Varying tau_d and tau_cloud)
@@ -156,7 +156,7 @@ for ind_dust in range(0, len(dusttaulabel_list)):
 		cloudtaulabel=cloudtaulabel_list[ind_cloud]
 		cloudtauvalue=cloudtauvalue_list[ind_cloud]
 		
-		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel='colddrymars_0.02bar_250K', outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel+'_co2cloudod='+cloudtaulabel+'_z=20.5_reff=10', inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=True,co2cloudlayerinds=np.array([43]), co2cloudlayerods=np.array([cloudtauvalue]),co2iceparamsfile='cloud_co2_reff10_vareff0p1_lognormal.pickle', includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_reff1p5_vareff0p5_lognormal.pickle')
+		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel='colddrymars_0.02bar_250K', outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel+'_co2cloudod='+cloudtaulabel+'_z=20.5_reff=10', inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=True,co2cloudlayerinds=np.array([43]), co2cloudlayerods=np.array([cloudtauvalue]),co2iceparamsfile='cloud_co2_reff10_vareff0p1_lognormal.pickle', includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_pangajello_reff1p5_vareff0p5_lognormal.pickle')
 
 ##################
 ####Dust and clouds (varying tau_d and cloud position)
@@ -175,4 +175,4 @@ for ind_dust in range(0, len(dusttaulabel_list)):
 		cloudpositionslabel=cloudpositionslabel_list[ind_cloud]
 		cloudindexvalue=cloudindexvalue_list[ind_cloud]
 		
-		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel='colddrymars_0.02bar_250K', outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel+'_co2cloudod=100_z='+cloudpositionslabel+'_reff=10', inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=True,co2cloudlayerinds=np.array([cloudindexvalue]), co2cloudlayerods=np.array([100.]),co2iceparamsfile='cloud_co2_reff10_vareff0p1_lognormal.pickle', includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_reff1p5_vareff0p5_lognormal.pickle')
+		rt.uv_radtrans(z_upper_limit=64.e5, z_step=1.e5, inputatmofilelabel='colddrymars_0.02bar_250K', outputfilelabel='z=0_A=desert_noTD_DS_dustod='+dusttaulabel+'_co2cloudod=100_z='+cloudpositionslabel+'_reff=10', inputspectrafile='general_youngsun_mars_spectral_input.dat',TDXC=False, DeltaScaling=True, SZA_deg=0., albedoflag='nonuniformalbedo',nonuniformalbedo=np.array([0.,0.,1.,0.,0.]), includeh2ocloud=False,includeco2cloud=True,co2cloudlayerinds=np.array([cloudindexvalue]), co2cloudlayerods=np.array([100.]),co2iceparamsfile='cloud_co2_reff10_vareff0p1_lognormal.pickle', includedust=True,tau_d=dusttauvalue,dustparamsfile='dust_wolff_pangajello_reff1p5_vareff0p5_lognormal.pickle')

@@ -509,6 +509,8 @@ def generate_cloud_optical_params(wav, r_eff, var_eff, indreffunc, dist, filenam
 ####Generate output
 #########################
 wav=np.arange(99.5, 500.5, step=0.1)
+#wav=np.arange(90., 510., step=10.)
+
 #generate_cloud_optical_params(wav, 1., 0.1, indref_co2_ice_ppc, lognormal, './ParticulateOpticalParameters/cloud_co2_reff1_vareff0p1_lognormal')
 #generate_cloud_optical_params(wav, 1., 0.1, indref_water_ice_warren_2008, lognormal, './ParticulateOpticalParameters/cloud_h2o_reff1_vareff0p1_lognormal')
 #generate_cloud_optical_params(wav, 10., 0.1, indref_co2_ice_ppc, lognormal, './ParticulateOpticalParameters/cloud_co2_reff10_vareff0p1_lognormal')
@@ -516,8 +518,8 @@ wav=np.arange(99.5, 500.5, step=0.1)
 #generate_cloud_optical_params(wav, 100., 0.1, indref_co2_ice_ppc, lognormal, './ParticulateOpticalParameters/cloud_co2_reff100_vareff0p1_lognormal')
 #generate_cloud_optical_params(wav, 100., 0.1, indref_water_ice_warren_2008, lognormal, './ParticulateOpticalParameters/cloud_h2o_reff100_vareff0p1_lognormal')
 
-#generate_cloud_optical_params(wav, 1.5, 0.5, indref_dust_wolff_2009, lognormal, './ParticulateOpticalParameters/dust_wolff_reff1p5_vareff0p5_lognormal') #they technically allowed for nonspherical particles; we ignore this because we're not doing a detailed retrieval, we just want OOM estimates
-#generate_cloud_optical_params(wav, 1.5, 0.5, indref_dust_wolff_pang_ajello, lognormal, './ParticulateOpticalParameters/dust_wolff_pangajello_reff1p5_vareff0p5_lognormal') #they technically allowed for nonspherical particles; we ignore this because we're not doing a detailed retrieval, we just want OOM estimates
+generate_cloud_optical_params(wav, 1.5, 0.5, indref_dust_wolff_2009, lognormal, './ParticulateOpticalParameters/dust_wolff_reff1p5_vareff0p5_lognormal') #they technically allowed for nonspherical particles; we ignore this because we're not doing a detailed retrieval, we just want OOM estimates
+generate_cloud_optical_params(wav, 1.5, 0.5, indref_dust_wolff_pang_ajello, lognormal, './ParticulateOpticalParameters/dust_wolff_pangajello_reff1p5_vareff0p5_lognormal') #they technically allowed for nonspherical particles; we ignore this because we're not doing a detailed retrieval, we just want OOM estimates
 #####generate_cloud_optical_params(wav, 1.85, 0.51, indref_dust_ockertbell_1997, lognormal, './ParticulateOpticalParameters/dust_ockertbell_reff1p85_vareff0p51_lognormal') #they technically allowed for nonspherical particles; we ignore this because we're not doing a detailed retrieval, we just want OOM estimates
 
 

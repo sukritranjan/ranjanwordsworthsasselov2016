@@ -74,11 +74,11 @@ def erg2phot(energy, wavelength):
 ########################
 ###Which plots to generate?
 ########################
-plot_tpdep=True #plot the dependence of surface fluence on clear-sky H2O-CO2 atmospheres as a function of temperature and pressure.
+plot_tpdep=False #plot the dependence of surface fluence on clear-sky H2O-CO2 atmospheres as a function of temperature and pressure.
 #plot_td_dep=False #plot the dependence of surface fluence on whether or not CO2 temperature dependence is included, for clear-sky H2O-CO2 atmospheres as a function of pressure.
-plot_td_dep_lowpressure=True #plot the dependence of surface fluence on whether or not CO2 temperature dependence is included, for clear-sky H2O-CO2 atmospheres, just for low pressure (pCO2=2e-5 bar)
+plot_td_dep_lowpressure=False #plot the dependence of surface fluence on whether or not CO2 temperature dependence is included, for clear-sky H2O-CO2 atmospheres, just for low pressure (pCO2=2e-5 bar)
 
-plot_clouds=True #plot the impact of varying levels of CO2 and H2O clouds in a CO2-H2O atmosphere.
+plot_clouds=False #plot the impact of varying levels of CO2 and H2O clouds in a CO2-H2O atmosphere.
 
 plot_pso2_pco2=True #plot the impact of varying levels of SO2 in a CO2-H2O-SO2 atmosphere
 plot_ph2s_pco2=True #plot the impact of varying levels of SO2 in a CO2-H2O-SO2 atmosphere
@@ -163,7 +163,7 @@ if plot_dust_clouds:
 		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[3].set_ylim([1.e5, 1.e15])
 	ax[3].set_yscale('log')
@@ -173,7 +173,7 @@ if plot_dust_clouds:
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=12)
 	plt.tight_layout(rect=(0,0,1,0.94))
 	plt.subplots_adjust(wspace=0., hspace=0.2)
-	plt.savefig('./Plots/results_dust_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_dust_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -241,7 +241,7 @@ if plot_dust_pco2:
 		ax[1].plot(pco2_0p2_wav_dict[elt], erg2phot(pco2_0p2_surfint_dict[elt],pco2_0p2_wav_dict[elt] ), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 		ax[2].plot(pco2_2_wav_dict[elt], erg2phot(pco2_2_surfint_dict[elt], pco2_2_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[2].set_ylim([1.e5, 1.e15])
 	ax[2].set_yscale('log')
@@ -250,7 +250,7 @@ if plot_dust_pco2:
 	
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=2, mode='expand', borderaxespad=0., fontsize=10)
 	plt.tight_layout(rect=(0,0,1,0.94))
-	plt.savefig('./Plots/results_dust_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_dust_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -327,7 +327,7 @@ if plot_ph2s_clouds:
 		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[3].set_ylim([1.e4, 1.e15])
 	ax[3].set_yscale('log')
@@ -337,7 +337,7 @@ if plot_ph2s_clouds:
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=3, mode='expand', borderaxespad=0., fontsize=10)
 	plt.tight_layout(rect=(0,0,1,0.92))
 	plt.subplots_adjust(wspace=0., hspace=0.2)
-	plt.savefig('./Plots/results_ph2s_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_ph2s_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -416,7 +416,7 @@ if plot_pso2_clouds:
 		ax[3].plot(od1000_wav_dict[elt], erg2phot(od1000_surfint_dict[elt], od1000_wav_dict[elt]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[3].set_ylim([1.e4, 1.e15])
 	ax[3].set_yscale('log')
@@ -426,7 +426,7 @@ if plot_pso2_clouds:
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=3, mode='expand', borderaxespad=0., fontsize=10)
 	plt.tight_layout(rect=(0,0,1,0.94))
 	plt.subplots_adjust(wspace=0., hspace=0.2)
-	plt.savefig('./Plots/results_pso2_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_pso2_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -487,7 +487,7 @@ if plot_ph2s_pco2:
 		ax[1].plot(wav_dict[elt1], erg2phot(surfint_dict[elt1], wav_dict[elt1]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 		ax[2].plot(wav_dict[elt2], erg2phot(surfint_dict[elt2], wav_dict[elt2]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[2].set_ylim([1.e6, 1.e15])
 	ax[2].set_yscale('log')
@@ -496,7 +496,7 @@ if plot_ph2s_pco2:
 	
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=3, mode='expand', borderaxespad=0., fontsize=10)
 	plt.tight_layout(rect=(0,0,1,0.90))
-	plt.savefig('./Plots/results_ph2s_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_ph2s_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -557,7 +557,7 @@ if plot_pso2_pco2:
 		ax[1].plot(wav_dict[elt1], erg2phot(surfint_dict[elt1], wav_dict[elt1]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 		ax[2].plot(wav_dict[elt2], erg2phot(surfint_dict[elt2], wav_dict[elt2]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[ind], label=conclist[ind])
 
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	ax[2].set_ylim([1.e6, 1.e15])
 	ax[2].set_yscale('log')
@@ -566,7 +566,7 @@ if plot_pso2_pco2:
 	
 	ax[0].legend(bbox_to_anchor=[0, 1.13, 1., .152], loc=3, ncol=3, mode='expand', borderaxespad=0., fontsize=10)
 	plt.tight_layout(rect=(0,0,1,0.94))
-	plt.savefig('./Plots/results_pso2_pco2.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_pso2_pco2.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -622,19 +622,19 @@ if plot_clouds:
 		ax[1].plot(h2o_wav_dict[cloudtau], erg2phot(h2o_surfint_dict[cloudtau], h2o_wav_dict[cloudtau]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[tau_ind], label='Cloud OD='+cloudtau)
 		
 
-	ax[0].set_ylim([1.e9, 1.e15])
+	ax[0].set_ylim([1.e8, 1.e15])
 	ax[0].set_yscale('log')
 	ax[0].legend(loc=0, fontsize=10)
-	ax[0].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[0].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 	
-	ax[1].set_ylim([1.e9, 1.e15])
+	ax[1].set_ylim([1.e8, 1.e15])
 	ax[1].set_yscale('log')
 	ax[1].legend(loc=0, fontsize=10)
-	ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 	ax[1].set_xlabel('Wavelength (nm)')
 
 	plt.tight_layout()
-	plt.savefig('./Plots/results_clouds.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_clouds.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 
@@ -705,7 +705,7 @@ if plot_clouds:
 	####Plot differences
 	#ax[0].legend(loc=0, fontsize=12)
 	#plt.tight_layout()
-	#plt.savefig('./Plots/results_td.pdf', orientation='portrait',papertype='letter', format='pdf')
+	#plt.savefig('./Plots/results_td.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	#plt.show
 	
@@ -789,7 +789,7 @@ if plot_td_dep_lowpressure:
 
 		
 		ax.set_yscale('log')
-		ax.set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+		ax.set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
 
 	
 	ax.set_ylim([1.e9, 1.e15])
@@ -799,7 +799,7 @@ if plot_td_dep_lowpressure:
 	
 	ax.legend(loc=0, fontsize=12)
 	plt.tight_layout()
-	plt.savefig('./Plots/results_td_lowpressure.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_td_lowpressure.eps', orientation='portrait',papertype='letter', format='eps')
 	
 	plt.show()
 	###Plot differences
@@ -881,7 +881,8 @@ if plot_tpdep:
 			ax[P_ind].plot(wavelengths_dict[label], erg2phot(surface_intensity_dict[label], wavelengths_dict[label]), marker='s', markeredgewidth=0., markersize=markersizeval, linewidth=1, color=colors[T_ind], label=T_0+'K')
 			
 		ax[P_ind].set_yscale('log')
-		ax[P_ind].set_ylabel(r'Integrated Intensity (photons/s/cm$^2$/nm)')
+	ax[1].set_ylabel(r'Integrated Intensity (photons s$^{-1}$cm$^{-2}$ nm$^{-1}$)')
+	#ax[1].set_ylabel(r'Integrated Intensity (photons/s/cm$^{2}$/nm)')
 
 	
 	ax[numP-1].set_ylim([1.e9, 1.e15])
@@ -891,7 +892,7 @@ if plot_tpdep:
 	
 	ax[0].legend(loc=0, fontsize=12)
 	plt.tight_layout()
-	plt.savefig('./Plots/results_tpdep.pdf', orientation='portrait',papertype='letter', format='pdf')
+	plt.savefig('./Plots/results_tpdep.eps', orientation='portrait',papertype='letter', format='eps')
 
 	#PLOT DIFFERENCES
 	fig2, ax=plt.subplots(numP, figsize=(16.5*cm2inch,10.), sharex=True, sharey=True)
